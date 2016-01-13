@@ -52,9 +52,9 @@ tel: +1 416 797 7371
 # Members information. Shown on About page.
 members:
   - name: Arturo Cardenas
-    position: CEO
-    text: Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-    img: team01.jpeg
+    position: Freelancer
+    text: Making his entrance to the Data Science world
+    img: https://avatars1.githubusercontent.com/u/11340950?v=3&s=460
     social:
       - title: envelope #use for email address
         url: mailto:arturocam@gmail.com.com
