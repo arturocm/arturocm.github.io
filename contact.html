@@ -4,6 +4,10 @@ title: Contact
 permalink: /contact/
 ---
 
+<title>Google Icons</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 <div id="contactwrap"></div>
 
 <div class="container mtb">
@@ -34,7 +38,7 @@ permalink: /contact/
         </div><! --/col-lg-8 -->
 
         <div class="col-lg-4">
-            <h4>Our Address</h4>
+            <h4>Location <i class="material-icons">place</i></h4>
             <div class="hline"></div>
                 <p>
                     {% for line in site.address.first.lines %}
@@ -43,9 +47,8 @@ permalink: /contact/
                 </p>
                 <p>
                     Email: {{ site.email }}<br/>
-                    Tel: {{ site.tel }}
+                    <!-- Tel: {{ site.tel }} -->
                 </p>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
         </div>
     </div><! --/row -->
 </div><! --/container -->
