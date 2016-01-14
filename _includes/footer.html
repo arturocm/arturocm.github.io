@@ -1,3 +1,7 @@
+<title>Google Icons</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 <div id="footerwrap">
     <div class="container">
         <div class="row">
@@ -16,10 +20,10 @@
                 </p>
             </div>
             <div class="col-lg-4">
-                <h4>Our Bunker</h4>
+                <h4>Location</h4>
                 <div class="hline-w"></div>
                 <p>
-                    {% for line in site.address.first.lines %}
+                    <i class="material-icons">pin_drop</i> {% for line in site.address.first.lines %}
                         {{ line }} <br>
                     {% endfor %}
                 </p>
