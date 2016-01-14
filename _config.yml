@@ -43,7 +43,7 @@ disqus: arturocm
 address:
   - lines: 
     - Toronto, Canada
-    - Monterrey, Mexico
+    - Hermosillo & Monterrey, Mexico
 email: arturocam@gmail.com
 # tel: +1 (xxx) xxx xxxx
 
@@ -75,7 +75,7 @@ email: arturocam@gmail.com
 #     img: client04.png
     
 # Short text about your company. Shown in footer on every page and also separately on Home and Contact page.
-about: "I am a Data Scientist in-the-making with eight years of experience in analytics, customer facing and business-unit centric supply chains at the following industries: Retail, Consumer Packaged Goods, Electronics, Aerospace, Automotive and Manufacturing (for now)."
+about: "Data Scientist in-the-making"
 
 # Testimonial content. Shown on Home and About page. 
 # testimonial:
