@@ -1,0 +1,9 @@
+---
+layout: question
+title:  "What is Big Data?"
+date:   2014-04-25 16:54:46
+author: Arturo Cardenas
+categories:
+- question
+---
+Who knows... but at this time everybody is to afraid to ask
