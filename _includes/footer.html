@@ -23,7 +23,7 @@
                 <h4>Location</h4>
                 <div class="hline-w"></div>
                 <p>
-                    <i class="material-icons">pin_drop</i> {% for line in site.address.first.lines %}
+                    {% for line in site.address.first.lines %}
                         {{ line }} <br>
                     {% endfor %}
                 </p>
