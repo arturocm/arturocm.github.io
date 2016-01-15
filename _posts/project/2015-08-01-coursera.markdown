@@ -1,6 +1,6 @@
 ---
 layout: project
-title:  "Census Choropleth Map Shiny App"
+title:  "Coursera´s Data Science Specialization Capstone Project"
 date:   2015-08-01 16:54:46
 author: Arturo Cardenas
 categories:
