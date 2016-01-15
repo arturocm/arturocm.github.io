@@ -1,36 +1,31 @@
 ---
 layout: project
-title:  "Data Science Specialization Capstone Project"
+title:  "Mapping Census Data in R"
 date:   2015-08-22 16:54:46
 author: Arturo Cardenas
 categories:
 - project
-img: capstone01.png
-thumb: capstone01.png
+img: choropleth.png
+thumb: choropleth_tumbs.png
 carousel:
-- capstone01.png
-- capstone02.jpeg
-- capstone03.png
-tagged: r, data science, knime, NLP
-website: https://arturocm.shinyapps.io/Capstone/
+- choropleth01.png
+- choropleth02.png
+- choropleth03.png
+tagged: r, choropleth, shiny apps
+website: https://arturocm.shinyapps.io/censuschoropleth/
 ---
-####Coursera´s Data Science Specialization Capstone Project
-The capstone project allows us (students) to create a usable/public data product that can
-be used to show the skills developed throughout the nine courses of the data science specialization.
-In this occasion, we\'ll work on understanding and building Predictive Text Models like the ones used by
-<a href=" http://swiftkey.com/en/" target="_blank">SwiftKey</a>- Coursera\'s corporate partner for this capstone project.
+####Mapping Census Data in R <a href="https://twitter.com/hashtag/censuscourse" target="_blank">#censuscourse</a>
 
+<p>This is a simple shiny app that lets you select between 
+different variables from the df_state_demographics data frame. You can also play with the argument num_colors from the state_choropleth formula to see how it alterate the displayed colors</p>
 
-The data used in this project is from a corpus called
-<a href=" http://www.corpora.heliohost.org " target="_blank">HC Corpora</a>.
-The files have been language filtered by <a href=" http://www.coursera.org" target="_blank">Coursera</a>
-but it still needed some pre-processing.
+<p>Just like in HW1 we need to create a choropleth of some other demographic statistic in 
+the data.frame df_county_demographics. The advantage of using Shiny is that you can selection
+among all the variables from the data frame and play with the num_colors to see how they interact</p>
 
-The following are the steps followed throughout the entire capstone to get to this final stage:
-<ul>
-	<li>An introductory quiz to test whether you have downloaded and can manipulate the data</li>
-	<li>An intermediate R markdown report that describes in plain language, plots, and code your exploratory analysis of the course data set <a href="http://rpubs.com/arturocm/capstone_milestone" target="_blank">see here</a></li>
-	<li>Two natural language processing quizzes, where you apply your predictive model to real data to check how it is working. </li>
-	<li>A Shiny app that takes as input a phrase (multiple words), one clicks submit, and it predicts the next word. </li>
-	<li>A 5 slide deck created with R presentations pitching your algorithm and app to your boss or investor. <a href="http://rpubs.com/arturocm/capstone" target="_blank">see here</a></li>
-</ul>
+<p>In HW3 we now create a choropleth - zoomed at the county level - for demographic statistic available 
+the data.frame df_zip_demographics. For this we'll use the formula zip_choropleth(). Also, Shiny gives 
+us the advantage we can cross-reference the FIPS code list from 
+<a href="https://www.census.gov/" target="_blank">https://www.census.gov/</a>
+The advantage of using Shiny is that you can selection among all the variables from the data frame and 
+lay with the num_colors to see how they interact </p>
