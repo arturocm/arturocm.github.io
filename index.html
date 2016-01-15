@@ -6,28 +6,28 @@ permalink: /
 
 <div id="service">
     <div class="container">
-    <div class="row centered">
-    <h4>Main experience in:</h4>
-    </div>
+        <div class="row centered">
+            <h4>Main experience in:</h4>
+        </div>
         <div class="row centered">
             <div class="col-md-4">
                 <i class="fa fa-cog fa-spin"></i>
                 <h4>Supply Chain & Operations</h4>
                 <p>I've worked with a wide range from SMEs to Global Companies in Retail, Consumer Packaged Goods, Electronics, Aerospace, Automotive and Manufacturing (more to come)</p>
-<!--                 <p><br/><a href="#" class="btn btn-theme">More Info</a></p>
- -->            </div>
+                <!-- <p><br/><a href="#" class="btn btn-theme">More Info</a></p> -->            
+            </div>
             <div class="col-md-4">
                 <i class="fa fa-shopping-cart"></i>
                 <h4>Retail</h4>
                 <p>I understand the business starting from the Shelf all the way back to the Production line making sure the right pruduct at the right quantity was always on-shelf (or at least a good approximation was nearby)</p>
-<!--                 <p><br/><a href="#" class="btn btn-theme">More Info</a></p>
- -->            </div>  
+                <!--<p><br/><a href="#" class="btn btn-theme">More Info</a></p> --> 
+            </div>  
             <div class="col-md-4">
                 <i class="fa fa-bar-chart"></i>
                 <h4>Analytics</h4>
                 <p>I know the importance of selling with <b>Better</b> Data <b>Faster</b> than anyone else. It's not only about getting the correct information, it's also about helping make educated decisions on time with it.</p>
-<!--                 <p><br/><a href="#" class="btn btn-theme">More Info</a></p>
- -->            </div>	 				
+                <!-- <p><br/><a href="#" class="btn btn-theme">More Info</a></p>-->            
+            </div>	 				
         </div>
     </div><!--/container -->
 </div><!--/service -->
@@ -46,7 +46,7 @@ permalink: /
             <h4>Frequently Asked</h4>
             <div class="hline"></div>
             {% for post in site.categories['question'] %} 
-                <p><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></p>
+            <p><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></p>
             {% endfor %}
         </div>
 
@@ -54,7 +54,7 @@ permalink: /
             <h4>Latest Posts</h4>
             <div class="hline"></div>
             {% for post in site.categories['blog'] limit:5 %} 
-                <p><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}.</a></p>
+            <p><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}.</a></p>
             {% endfor %} 
         </div>
 
