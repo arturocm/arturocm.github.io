@@ -11,7 +11,7 @@ img: post01.jpg
 thumb: thumb01.jpg
 ---
 
-This is my <b>Kickoff Post!</b> 
+<p>This is my <b>Kickoff Post!</b> </p>
 <!--more-->
 Later I will tell more about:
 <li>Why another data science blog?</li>
