@@ -17,15 +17,12 @@ website: https://arturocm.shinyapps.io/censuschoropleth/
 ####Mapping Census Data in R <a href="https://twitter.com/hashtag/censuscourse" target="_blank">#censuscourse</a>
 
 <p>This is a simple shiny app that lets you select between 
-different variables from the df_state_demographics data frame. You can also play with the argument num_colors from the state_choropleth formula to see how it alterate the displayed colors</p>
+different variables from the df_state_demographics data frame. You can also play with the argument num_colors from the state_choropleth formula to see how the color intensity changes</p>
 
-<p>Just like in HW1 we need to create a choropleth of some other demographic statistic in 
-the data.frame df_county_demographics. The advantage of using Shiny is that you can selection
-among all the variables from the data frame and play with the num_colors to see how they interact</p>
+<p>On the HW2 tab we need to create a choropleth of some other demographic statistic in 
+the data.frame df_county_demographics.</p>
 
-<p>In HW3 we now create a choropleth - zoomed at the county level - for demographic statistic available 
-the data.frame df_zip_demographics. For this we'll use the formula zip_choropleth(). Also, Shiny gives 
+<p>On the HW3 tab we create a choropleth - zoomed at the county level - for demographic statistic available in the data.frame df_zip_demographics. For this we'll use the formula zip_choropleth(). Also, Shiny gives 
 us the advantage we can cross-reference the FIPS code list from 
 <a href="https://www.census.gov/" target="_blank">https://www.census.gov/</a>
-The advantage of using Shiny is that you can selection among all the variables from the data frame and 
-lay with the num_colors to see how they interact </p>
+</p>
