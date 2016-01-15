@@ -1,0 +1,37 @@
+---
+layout: contact
+title: Contact
+permalink: /thankyou
+---
+
+<title>Google Icons</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<div id="contactwrap"></div>
+
+<div class="container mtb">
+    <div class="row">
+        <div class="col-lg-8">
+            <h4>Just Get In Touch!</h4>
+            <div class="hline"></div>
+                <p>{{ site.about }}</p>
+            <div class="hline"></div>
+            <h3>Your message has been submitted... thank you!</h3>
+        </div><! --/col-lg-8 -->
+
+        <div class="col-lg-4">
+            <h4>Location <i class="material-icons">place</i></h4>
+            <div class="hline"></div>
+                <p>
+                    {% for line in site.address.first.lines %}
+                        {{ line }} <br>
+                    {% endfor %}
+                </p>
+                <p>
+                    Email: {{ site.email }}<br/>
+                    <!-- Tel: {{ site.tel }} -->
+                </p>
+        </div>
+    </div><! --/row -->
+</div><! --/container -->
