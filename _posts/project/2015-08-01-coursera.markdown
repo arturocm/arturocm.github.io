@@ -11,7 +11,7 @@ carousel:
 - capstone01.png
 - capstone02.jpeg
 - capstone03.png
-tagged: r, data science, knime, NLP
+tagged: r, data science, knime, NLP, shiny apps
 website: https://arturocm.shinyapps.io/Capstone/
 ---
 ####Coursera´s Data Science Specialization Capstone Project
