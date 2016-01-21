@@ -8,30 +8,43 @@ categories:
 - R
 - web scraping
 - plotly
+- rtodolist
 img: logo_liga_mx.jpg
 thumb: tigres_uanl.png
 ---
 
-###Intro
 
 
 Back in November I saw a post using ggplot2 to visualized MLS Player Salaries. I thought I would give it a try and replicate the analysis for the Mexican Soccer League using the [newly open sourced Plotly](https://plot.ly/javascript/open-source-announcement/?utm_content=buffer31954&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer) but first I had to figure out where to get the data...
 
 <!--more-->
 
-###The tweets
+###The tweet
 
-This is the tweet linking to [@tejaykodali](https://twitter.com/tejaykodali) post:
+
+This tweet links to [@tejaykodali](https://twitter.com/tejaykodali) post:
+
+
 <blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr">Visualizing MLS Player Salaries with ggplot2 <a href="https://t.co/Vh5I3wWB4M">https://t.co/Vh5I3wWB4M</a> <a href="https://twitter.com/hashtag/rtodolist?src=hash">#rtodolist</a> for LigaMX</p>&mdash; Arturo Cárdenas (@arturocm) <a href="https://twitter.com/arturocm/status/672268433904574466">December 3, 2015</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-And this is the tweet liking to Plotly's announce to go Open Source!
-<blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr">Plotly&#39;s JavaScript graphing library is now Open-source and Free <a href="https://t.co/6KOBKCF5f4">https://t.co/6KOBKCF5f4</a> <a href="https://twitter.com/hashtag/todolist?src=hash">#todolist</a> <a href="https://twitter.com/hashtag/visualization?src=hash">#visualization</a> <a href="https://twitter.com/hashtag/rstats?src=hash">#rstats</a></p>&mdash; Arturo Cárdenas (@arturocm) <a href="https://twitter.com/arturocm/status/672415510794002432">December 3, 2015</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 
 ###ETL process
 
-The initial task was to find a way to obtain the salary data. I didn't had a PDF file with all the salaries (just like the original post) so I had to become resourceful and look for ways to scrap the information from [Transfermarkt](http://www.transfermarkt.es). Using the `rvest` package I was able to loop through each team from the league and obtain compile a single table with all the required data. 
+
+
+First we need to get the salary data. I didn't have a PDF file with all the salaries (just like the original post) so I had to look for ways to scrap the information from [Transfermarkt](http://www.transfermarkt.es).  
+
+
+
+```{r ligamx_links, warning=FALSE, tidi= TRUE, message=FALSE}
+# Set the initial url to pull the data
+url.t <- "http://www.transfermarkt.es"
+# Mexican League link
+url.mx <- "/liga-mx-clausura/marktwerteverein/wettbewerb/MEX1/" #mexico
+```
+
 
 ```{r library_load, warning=FALSE, tidi= TRUE, message=FALSE, echo=FALSE}
 library(rvest)
@@ -40,8 +53,14 @@ library(data.table)
 library(plotly)
 library(RColorBrewer)
 library(dplyr)
-library(DT)
+library(printr)
 ```
+
+
+
+Using the `rvest` package I was able to loop through each team from the league and obtain compile a single table with all the required data.
+
+
 
 ```{r rvest, warning=FALSE, tidi= TRUE, message=FALSE}
 transfermarkt <- function (x = dara.url){
@@ -84,10 +103,21 @@ transfermarkt <- function (x = dara.url){
 ```
 
 
-The salaries raw data has extra text and its formated as string. Using the self defined `cleansing` formula the values are 1) transformed to number values, and 2) converted from euros to USD at a 1.09 rate. 
+```{r transfermarkt, warning=FALSE, tidi= TRUE, message=FALSE}
+team.value <- transfermarkt(url.mx)
+```
 
 
-```{r data_cleaning, warning=FALSE, tidi= TRUE, message=FALSE}
+
+The raw data includes `NAs` and currency values formatted as string. Using the self defined `cleansing` formula the values are:
+
+1. Transformed to number values, and 
+2. converted from euros to USD
+
+
+
+
+```{r data_cleaning, warning=FALSE, tidi= TRUE, message=FALSE, echo = FALSE}
 cleansing <- function(data = team.value){
   # Filter out all NA and edit strings to numeric values
   draft <- data[!(is.na(data$value) | is.na(data$team)),]
@@ -104,11 +134,18 @@ cleansing <- function(data = team.value){
 }
 ```
 
+```{r using_cleansing, warning=FALSE, tidi= TRUE, message=FALSE}
+draft <- cleansing(team.value)
+```
 
-In order to have more control on the colors asigned in the plot we are defining the `color.column` formula to take advante of the `RColorBrewer`package and pre-define the color scale to be used in the final plot. 
 
 
-```{r colorbrew, warning=FALSE, tidi= TRUE, message=FALSE}
+To control the colors assigned in the plot we are defining the `color.column` formula to take advantage of the `RColorBrewer`package and pre-define the color scale to be used in the final plot. 
+
+
+
+
+```{r colorbrew, warning=FALSE, tidi= TRUE, message=FALSE, echo =FALSE}
 color.column <- function(x = data, team_rank = 0){
   draft <- arrange(x, value.adj)
   set.color <- cbind.data.frame(value.adj = unique(draft$value.adj),
@@ -130,8 +167,15 @@ color.column <- function(x = data, team_rank = 0){
 }
 ```
 
+```{r using.color.column, warning=FALSE, tidi= TRUE, message=FALSE}
+final.draft <- color.column(draft, team_rank = 0)
+```
+
+
 
 **Finally** we are defining the parameters to be used in the **Plotly** bar chart!
+
+
 
 
 ```{r plotly, warning=FALSE, tidi= TRUE, message=FALSE}
@@ -155,34 +199,24 @@ league.plot <- function(x = data, Plot.Title = "League"){
 }
 ```
 
-
-Now lets go down to business! Firts we need to set the url that will direct the web scraper to the Mexican Soccer League initial page:
-
-
-```{r ligamx_links, warning=FALSE, tidi= TRUE, message=FALSE}
-# Set the initial url to pull the data
-url.t <- "http://www.transfermarkt.es"
-# Mexican League link
-url.mx <- "/liga-mx-clausura/marktwerteverein/wettbewerb/MEX1/" #mexico
-```
-
-
-And then we´ll just run all the previously defined formulas to end up with an interactive chart:
-
-
 ```{r liga_mx, warning=FALSE, tidi= TRUE, message=FALSE}
-team.value <- transfermarkt(url.mx)
-draft <- cleansing(team.value)
-final.draft <- color.column(draft, team_rank = 0)
 final.draft <- arrange(final.draft, (total), (value.adj))
 league.plot(final.draft, "Liga MX Teams")
 ```
 
 
+
+You can find a larger version of this plot [here](http://rpubs.com/arturocm/ligamx)
+
+
+
 ###Going the extra mile
 
 
-Now, if we want to see the same visualization taking into account all the American Continent teams, we can create a vector containing all the urls to all the leagues and pass it through the formulas.
+
+
+Now, if we want to replicate this for all the Teams in the continent, we just need to create a vector containing all the URLs linking to all the leagues in America and pass it through the same formulas.
+
 
 
 ```{r other_links, warning=FALSE, tidi= TRUE, message=FALSE}
@@ -204,7 +238,9 @@ url.es <- "/primera-division/marktwerteverein/wettbewerb/ES1"
 ```
 
 
-For visualization porpuses we are limiting the list to the 20 most expensive soccer teams in the continent.
+
+For visualization purposes we are limiting the list to the 20 most expensive soccer teams in the continent.
+
 
 
 ```{r america, warning=FALSE, tidi= TRUE, message=FALSE}
@@ -216,14 +252,28 @@ league.plot(final.draft, "Most Expensive Soccer teams from America")
 ```
 
 
-And finally - since we already have the data loaded - here is the list of the 20 players with the highest salaries in the continent:
+
+You can find a larger version of this plot [here](http://rpubs.com/arturocm/allsoccer)
+
+
+
+And finally - since we already have the data loaded - here is the list of the soccer players with the highest salaries in the continent:
+
+
 
 
 ```{r players, warning=FALSE, tidi= TRUE, message=FALSE}
 draft <- cleansing(team.value)
 final.draft <- color.column(draft)
-final.table <- select(final.draft, number, name, position, team, USD = value.adj)
-final.table <- arrange(final.table, desc(USD))
-final.table[1:20,]
+final.table <- select(final.draft, No = number, name, position, team, USD_MM = value.adj)
+final.table <- arrange(final.table, desc(USD_MM))
+
+knitr::kable(final.table[1:10,], digits = 2, row.names = TRUE, align = "c", format = "markdown", padding = 40)
 ```
+
+
+
+
+
+*You can find the entire rmarkdown document [here](https://github.com/arturocm/arturocm.github.io/_source/liga-mx)*
 
