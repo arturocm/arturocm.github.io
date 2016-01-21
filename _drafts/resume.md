@@ -1,6 +1,11 @@
 ***
 #### PROFESSIONAL EXPERIENCE
 
+**FREELANCER**   
+**Data Scientist**  
+Toronto, Canada / Monterrey, Mexico  
+Jan 2016 – Present  
+
 [**PROCTER & GAMBLE INC.**](http://www.pg.ca)    
 **Retail Data Analytics Specialist Walmart Canada Team**  
 Toronto, Canada  
