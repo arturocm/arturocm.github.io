@@ -19,7 +19,7 @@ colors:  #in hex code if not noted else
   link: "#428bca"
   link_hover: "#01b2fe"
   footer_heading: "#ffffff"
-  footer_content: "#bfc9d3"
+  footer_content: "#ffffff" #"#bfc9d3"
   
   
 ### CONTACT SETTINGS ###
