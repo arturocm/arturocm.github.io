@@ -7,11 +7,12 @@ categories:
 - blog
 - knime
 - machine learning
+- random forest
 img: nfl_knime.png
 thumb: knime.png
 ---
 
-**My take on AI in American Footaball**
+**My take on AI in American Football**
 
 After Money Ball, sport teams across the world want to gain advantages based on data. Even [foosball tables](http://digitalfoosball.com/) store data now. But with the expansion of fantasy sports, this has turn to be a whole new industry.
 
