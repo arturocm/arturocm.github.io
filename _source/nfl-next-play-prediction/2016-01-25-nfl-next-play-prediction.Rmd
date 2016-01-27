@@ -14,8 +14,7 @@ thumb: knime.png
 
 **My take on AI in American Football**
 
-After Money Ball, sport teams across the world want to gain advantages based on data. Even [foosball tables](http://digitalfoosball.com/) store data now. But with the expansion of fantasy sports, this has turn to be a whole new industry.
-
+After Money Ball, sport teams across the world want to gain advantages based on data. Even [foosball tables](http://digitalfoosball.com/) store data now.
 
 
 Earlier this week I ran across an article from [Wired](http://www.wired.com) named [Football Coaches Are Turning to AI for Help Calling Plays](http://www.wired.com/2016/01/football-coaches-are-turning-to-ai-for-help-calling-plays?utm_content=bufferc74f9&utm_medium=social&utm_source=linkedin.com&utm_campaign=buffer). Apparently this isn't a new thing, so I decided to give it a try using [KNIME](https://www.knime.org/). I must emphasize in *"give it a try"* since we only have 2 weeks left of NFL and then the fuss will be gone until next September.
@@ -38,7 +37,7 @@ We'll follow the next steps in KNIME to create a model that predicts the next pl
 ####1. Data Load
 
 
-**WE NEED DATA!** (not foosball data though). Goggling "NFL play by play stats" could lead you to almost buying a ~1,200 USD subscription to daily NFL stats updates. Since I don't have that amount to spend on this I will use the last 3 seasons available at [NFL savant](http://nflsavant.com/about.php).  
+**WE NEED DATA!** (not Foosball data though). Goggling "NFL play by play stats" could lead you to almost buying a ~1,200 USD subscription to daily NFL stats updates. Since I don't have that amount to spend on this I will use the last 3 seasons available at [NFL savant](http://nflsavant.com/about.php).  
 
 My KNIME workflow starts with the **data load** section. This section contains a node per file to read - and load - into the workflow. 
 
