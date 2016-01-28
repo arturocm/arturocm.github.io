@@ -1,7 +1,7 @@
 ---
 layout: project
-title:  "Industry Analysis: The Fastener Supply Chain in Aerospace Industry"
-date:   2011-09-15 16:54:46
+title: "Industry Analysis: The Fastener Supply Chain in Aerospace Industry"
+date: 2011-09-15 16:54:46
 author: Arturo Cardenas
 client: Bombardier Aerospace
 categories:
