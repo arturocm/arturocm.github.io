@@ -1,0 +1,213 @@
+---
+layout: post
+title:  "A Mexican Convenience Store Mexican Standoff"
+date: 2016-01-31
+author: Arturo Cardenas
+categories:
+- blog
+- R
+- leaflet
+- inegir
+- rtodolist
+img: inegi_map.png
+thumb: inegi.png
+---
+
+There are two major competitors in the Convenience Store industry in Monterrey, Mexico: "OXXO"" and "7 Eleven". People usually don't realize how big is the footprint they have in the metropolitan area. Taking advantage of `inegiR`and `leaflet`R packages I decided to do a quick visual exercise to learn **who is where**
+
+
+<!--more-->
+
+<br>
+
+
+
+####About the `inegiR` package
+
+
+
+A couple of months ago I read about `inegiR`- a R package that helps you interact with the APIs from the official statistics agency of Mexico [INEGI](http://www.inegi.org.mx/) within R. Its author [@eflores89](https://twitter.com/eflores89) talks about the package in  [r-bloggers](http://www.r-bloggers.com/inegir-an-r-package-for-mexican-official-statistics/) in more detail.
+
+It's important to note that you can access all the information through two APIs - so you are going to need two different tokens. One will give you access to the Indexes while the other one will allow you to pull data from the DENUE database (National Statistic Business Directory... or something like that)
+
+You can get your tokens through these links:
+
+1. [Indexes API](http://www.inegi.org.mx/desarrolladores/indicadores/apiindicadores.aspx)
+2. [DENUE API](http://www3.inegi.org.mx/sistemas/api/denue/v1/tokenVerify.aspx)
+
+
+<br>
+
+####Warming up with the Indexes API
+
+
+Okay, assuming you already got your tokens, the next step will be to jump into **R** and load the library...
+
+```{r load_inegir, message=FALSE, warning=FALSE}
+library(inegiR)
+```
+
+... and load the tokens. It's not that I don't like to share, but you would have to input your own tokens to make this work. 
+
+```{r tokens, eval=FALSE}
+token <- "abc"
+token_denue <- "123"
+```
+
+```{r tokens_load, echo=FALSE, eval=TRUE}
+source("/Users/arturocam/GitHub/extra/inegir_tokens.R")
+```
+
+Once you have the library up and running, and your tokens values stored in some variable then we can start pulling data from INEGI. There are many data sets you can obtain, but for testing purposes I am going to download the Mexican Peso vs USD Exchange rate for the past 20 or 30 years. 
+
+```{r tipo_cambio_data, tidy=TRUE}
+cambio <- series_tipocambio(token)
+names(cambio) <- c("Cambio","Fechas")
+head(cambio,5)
+```
+
+Now that the data is loaded  we can get "fancy"" and load it into some htmlwidget package. Using the `dygraphs` package we can make a time-series chart.
+
+```{r tipo_cambio_plot, message=FALSE, warning=FALSE}
+library(dygraphs)
+library(xts)
+library(data.table)
+r <- xts(cambio, order.by=cambio$Fechas)
+dygraph(r, main = "Tipo de Cambio (MXN vs USD)") %>% 
+  dyRangeSelector(dateWindow = c("1995-01-01", "2015-12-01"))
+```
+
+<br>
+
+####What about the other API?
+
+To obtain information from the National Statistic Business Directory database (or whatever the exact translation is) we need to use the **DENUE API**. We already loaded the token a couple of lines above, and now we are going to start using it to download the Convenience Store data. 
+
+
+
+The formula we are going to use (`denue_inegi`) requires a specific point and the radius (in meters) that you want to search. The radius has a limit of 5Km and that could be a problem, but later we are going to talk on ways to bypass it. For this exercise we are going to pick the Lat/Lon for the ITESM University and we are going to pull any business that is classified as "comercio al por menor"
+
+```{r single_map, echo=FALSE}
+load("/Users/arturocam/GitHub/extra/mapa_single.Rda")
+latitud = 25.650443 #Tec de Monterrey Campus Monterrey Latitud
+longitud = -100.289725 #Tec de Monterrey Campus Monterrey Longitud
+```
+
+```{r unique_coordenate_data, warning=FALSE, message=FALSE, eval=FALSE}
+latitud = 25.650443 #Tec de Monterrey Campus Monterrey Latitud
+longitud = -100.289725 #Tec de Monterrey Campus Monterrey Longitud
+mapa <- denue_inegi(latitud,longitud, token_denue, metros = 5000, keyword = "comercio al por menor")
+```
+
+Once we have the raw business data, we're going to filter to get only stores that have "OXXO", "ELEVEN" or "EXTRA" in their formal or informal names (Nombre, Razon). 
+
+```{r unique_coordenate_ETL, warning=FALSE, message=FALSE}
+data_etl <- function(mapa=mapa){
+  oxxo <- mapa[mapa$Nombre %like% "OXXO" | mapa$Razon %like% "OXXO",]
+  seven <- mapa[mapa$Nombre %like% "ELEVEN" | mapa$Razon %like% "ELEVEN",]
+  extra <- mapa[mapa$Nombre %like% "EXTRA" | mapa$Razon %like% "EXTRA",]
+  oxxo$type <- "OXXO"
+  seven$type <- "SEVEN"
+  extra$type <- "EXTRA"
+  output <- rbind(oxxo,seven,extra)
+  return(output)
+}
+a <- nrow(mapa)
+mapa <- data_etl(mapa)
+b <- nrow(mapa)
+```
+
+
+Now we have reduced our data frame from `r a` down to `r b`. Using the `leafet` package we can now see where are all the stores located 5000 mts around the ITESM.
+
+
+```{r unique_coordenate_map, warning=FALSE, message=FALSE, echo = FALSE}
+library(leaflet)
+pal <- colorFactor(c("blue","red", "green"), domain = c("EXTRA","OXXO", "SEVEN"))
+map <- leaflet() %>%
+  addTiles() %>%
+  setView(longitud, latitud, zoom = 10) %>%
+  addCircleMarkers(lat = mapa$Latitud,
+                   lng = mapa$Longitud,
+                   popup = mapa$Nombre,
+                   radius = 3,
+                   color = pal(mapa$type),
+                   stroke = TRUE, fillOpacity = 0.5) %>%
+  addProviderTiles("CartoDB.Positron")   %>%
+  addLegend("bottomright",pal = pal, values = c("EXTRA","OXXO", "SEVEN"), opacity = .5)
+map
+```
+
+####Working around the radius limit
+
+As we mentioned before, the API only allows to pull data from up to 5Km  around your initial coordinates. In order to cover the whole metropolitan area we would need to pick lat/lon points around and loop the points in the `denue_inegi` formula. 
+
+This is a [Packing Problem](https://en.wikipedia.org/wiki/Packing_problems) but for now, we don't want to take it too serious. 
+
+This is why I created a function `grid` that split any rectangular area in points separated by 0.7 degrees in each direction. According to some guys in the internet $1º=~100Kms$. So by trial and error 0.07º will do the work.
+
+The function overlaps the coverage area creating duplicate values. This is why we use the `unique` function - within `grid`- to remove duplication. 
+
+```{r grid_function, warning=FALSE, message=FALSE}
+grid <- function(lat1=25.827886, lon1=-100.499367, lat2=25.617245, lon2=-100.113159){
+  lat = 0.07
+  lon = 0.07
+  grid_output <- cbind(lat1,lon1)
+  x <- abs(round((lat1-lat2)/lat, digits = 0))+1
+  y <- abs(round((lon1-lon2)/lon, digits = 0))+1
+  for (i in 1:x){
+    for (j in 1:y){
+      la <- lat1-((i*lat)-lat)
+      lo <- lon1+((j*lon)-lon)
+      prev <- cbind(la,lo)
+      grid_output <- rbind(grid_output, prev)
+    }
+  }
+  return(grid_output)
+}
+
+a <- as.data.frame(grid())
+```
+
+Here is a look of all the points we'll loop the `denue_inegi` function to cover Monterrey and all other close by cities. 
+
+```{r grid_map, echo=FALSE}
+map <- leaflet() %>%
+  addTiles() %>%
+  setView(longitud, latitud, zoom = 10) %>%
+  addCircleMarkers(lat = a$lat1,
+                   lng = a$lon1,
+                   radius = 40) %>%
+  addProviderTiles("CartoDB.Positron") 
+map
+```
+
+By looping `denue_inegi` through our self-defined `grid` function we can now see the whole footprint of the major players in the Convenience Store Industry in the Monterrey Metropolitan Area.
+
+
+```{r map, echo=FALSE}
+load("/Users/arturocam/GitHub/extra/mapa.Rda")
+
+mapa <- data_etl(mapa)
+
+map <- leaflet() %>%
+  addTiles() %>%
+  setView(longitud, latitud, zoom = 10) %>%
+  addCircleMarkers(lat = mapa$Latitud,
+                   lng = mapa$Longitud,
+                   popup = mapa$Nombre,
+                   radius = 3,
+                   color = pal(mapa$type),
+                   stroke = TRUE, fillOpacity = 0.5) %>%
+  addProviderTiles("CartoDB.Positron")   %>%
+  addLegend("bottomright",pal = pal, values = c("EXTRA","OXXO", "SEVEN"), opacity = .5)
+
+
+map
+```
+
+I think this is a good time to wrap this up, but the are many potential uses of this script. You could group the data by postal code to understand any variance, or pair that grouping with income or average age in the region to understand the market. 
+
+Now, if you have access to POS data it will be a total different ballgame. 
+
+Until next time...
