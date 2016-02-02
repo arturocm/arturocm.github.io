@@ -212,6 +212,6 @@ Now, if you have access to POS data it will be a total different ballgame.
 
 Until next time...
 
-###UPDATE
+####UPDATE
 
-You can find the script to replicate this post [here](/scripts/a-mexican-standoff.R)
+You can find the script to replicate this post [here](/scripts)
