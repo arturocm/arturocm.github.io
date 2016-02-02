@@ -22,7 +22,7 @@ There are two major competitors in the Convenience Store industry in Monterrey, 
 
 
 
-####About the `inegiR` package
+#### About the `inegiR` package
 
 
 
@@ -38,7 +38,7 @@ You can get your tokens through these links:
 
 <br>
 
-####Warming up with the Indexes API
+#### Warming up with the Indexes API
 
 
 Okay, assuming you already got your tokens, the next step will be to jump into **R** and load the library...
@@ -79,7 +79,7 @@ dygraph(r, main = "Tipo de Cambio (MXN vs USD)") %>%
 
 <br>
 
-####What about the other API?
+#### What about the other API?
 
 To obtain information from the National Statistic Business Directory database (or whatever the exact translation is) we need to use the **DENUE API**. We already loaded the token a couple of lines above, and now we are going to start using it to download the Convenience Store data. 
 
@@ -138,7 +138,7 @@ map <- leaflet() %>%
 map
 ```
 
-####Working around the radius limit
+#### Working around the radius limit
 
 As we mentioned before, the API only allows to pull data from up to 5Km  around your initial coordinates. In order to cover the whole metropolitan area we would need to pick lat/lon points around and loop the points in the `denue_inegi` formula. 
 
@@ -212,6 +212,8 @@ Now, if you have access to POS data it will be a total different ballgame.
 
 Until next time...
 
-####UPDATE
+<br>
+
+#### UPDATE
 
 You can find the script to replicate this post [here](/scripts)
