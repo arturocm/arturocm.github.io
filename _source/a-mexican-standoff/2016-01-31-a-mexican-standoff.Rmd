@@ -216,4 +216,4 @@ Until next time...
 
 #### UPDATE
 
-You can find the script to replicate this post [here](/scripts)
+You can find the script to replicate this post [here](https://github.com/arturocm/arturocm.github.io/tree/master/scripts)
