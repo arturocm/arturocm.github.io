@@ -8,6 +8,7 @@ categories:
 - rtodolist
 img: post01.jpg
 thumb: thumb01.jpg
+comments: true
 ---
 
 ###Welcome!
