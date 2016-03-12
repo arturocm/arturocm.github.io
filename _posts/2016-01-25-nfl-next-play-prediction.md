@@ -10,6 +10,7 @@ categories:
 - random forest
 img: nfl_knime.png
 thumb: knime.png
+comments: true
 ---
 
 **My take on AI in American Football**

@@ -11,6 +11,7 @@ categories:
 - rtodolist
 img: inegi_map.png
 thumb: inegi.png
+comments: true
 ---
 
 There are two major competitors in the Convenience Store industry in Monterrey, Mexico: "OXXO"" and "7 Eleven". People usually don't realize how big is the footprint they have in the metropolitan area. Taking advantage of `inegiR`and `leaflet`R packages I decided to do a quick visual exercise to learn **who is where**

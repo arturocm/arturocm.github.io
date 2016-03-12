@@ -11,6 +11,7 @@ categories:
 - rtodolist
 img: logo_liga_mx.jpg
 thumb: tigres_uanl.png
+comments: true
 ---
 
 
