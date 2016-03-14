@@ -235,18 +235,19 @@ a.linkb:focus {
 #headerwrap {
 	background: url(../img/dist.gif) no-repeat center top;
 	margin-top: 70px;
-	padding-top: 150px;
-	padding-bottom: 150px;
+	padding-top: 70px;
+	padding-bottom: 70px;
 	text-align:center;
 	background-attachment: relative;
 	background-position: center center;
 	min-height: auto;
 	width: auto;
+	background-color: rgb(204,222,230);
 
-    -webkit-background-size: 100% 100%;
-    -moz-background-size: 100% 100%;
-    -o-background-size: 100% 100%;
-    background-size: 100% 100%;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    background-size: contain;
 
 /*    -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -256,7 +257,7 @@ a.linkb:focus {
 
 
 /*#headerwrap {
-	background-color: {{ site.colors.primary }};
+	background-color: rgb(190,208,217);
 	min-height: 0px;
 	padding-top: 70px;
 	padding-bottom: 20px;
@@ -269,11 +270,33 @@ a.linkb:focus {
 }
 
 #headerwrap h1 {
-	color: white;
+	color: black;
 	margin-bottom: 25px;
 }
 
 #headerwrap .img-responsive {
+	margin: 0 auto;
+}
+
+*#headerwrap2 {
+	background-color: {{ site.colors.primary  }};
+	min-height: 100px;
+	padding-top: 70px;
+	padding-bottom: 20px;
+	text-align: center;
+}*/
+
+#headerwrap2 h3, h5 {
+	color: white;
+	font-weight: 400;
+}
+
+#headerwrap2 h1 {
+	color: white;
+	margin-bottom: 25px;
+}
+
+#headerwrap2 .img-responsive {
 	margin: 0 auto;
 }
 
