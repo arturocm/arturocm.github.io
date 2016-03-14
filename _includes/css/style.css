@@ -270,7 +270,7 @@ a.linkb:focus {
 }
 
 #headerwrap h1 {
-	color: black;
+	color: {{ site.colors.secondary }};
 	margin-bottom: 25px;
 }
 
