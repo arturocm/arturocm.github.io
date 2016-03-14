@@ -279,7 +279,7 @@ a.linkb:focus {
 }
 
 *#headerwrap2 {
-	background-color: {{ site.colors.primary  }};
+	background-color: {{ site.colors.primary }};
 	min-height: 100px;
 	padding-top: 70px;
 	padding-bottom: 20px;
@@ -287,12 +287,12 @@ a.linkb:focus {
 }*/
 
 #headerwrap2 h3, h5 {
-	color: white;
+	color: #ffffff;
 	font-weight: 400;
 }
 
 #headerwrap2 h1 {
-	color: white;
+	color: #ffffff;
 	margin-bottom: 25px;
 }
 
