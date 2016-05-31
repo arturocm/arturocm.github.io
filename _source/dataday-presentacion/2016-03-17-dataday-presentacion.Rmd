@@ -1,0 +1,13 @@
+---
+layout: post
+title:  "El Inventario Fantasma... huuuuy que miedo"
+date: `r Sys.time()`
+author: Arturo Cardenas
+categories:
+- blog
+- Retail
+img: DataDay-logo.png
+thumb: DataDay-clean.png
+comments: true
+---
+
