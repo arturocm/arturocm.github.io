@@ -6,4 +6,4 @@ author: Arturo Cardenas
 categories:
 - question
 ---
-Who knows... but at this time everybody is to afraid to ask
+Who knows... but at this time everybody is too afraid to ask
