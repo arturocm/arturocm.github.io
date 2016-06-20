@@ -1,10 +1,18 @@
 ***
 #### PROFESSIONAL EXPERIENCE
+[**VISOR ADL**](http://www.visor.io/)    
+**Head of Analytics**  
+Toronto, Canada / Monterrey, Mexico  
+May 2016 – Present
+
+* Visor is a Fintech startup that provides services to lenders on customer management and big data analytics in order to increase reach and make more profitable their SME credit portfolio’s
 
 **FREELANCER**   
 **Data Scientist**  
 Toronto, Canada / Monterrey, Mexico  
-Jan 2016 – Present  
+Jan 2016 – Present
+
+* Developed RichIT's Retail Analytics Department by creating a Demand Forecasting model
 
 [**PROCTER & GAMBLE INC.**](http://www.pg.ca)    
 **Retail Data Analytics Specialist Walmart Canada Team**  
