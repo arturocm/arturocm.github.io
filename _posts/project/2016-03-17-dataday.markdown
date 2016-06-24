@@ -8,21 +8,20 @@ categories:
 img: DataDay-logo.png
 thumb: DataDay-clean.png
 carousel:
-- choropleth01.png
-- choropleth02.png
-- choropleth03.png
+- DataDay-logo.png
+- sc.png
+- simplesc.gif
+- complexsc.gif
+- vensim.png
 tagged: dataday, retail, presentation
 website: https://arturocm.github.io/dataday
 ---
-####Mapping Census Data in R <a href="https://twitter.com/hashtag/censuscourse" target="_blank">#censuscourse</a>
+####Phantom Inventory: The "Hello World" of Retail Analytics
 
-<p>This is a simple shiny app that lets you select between 
-different variables from the df_state_demographics data frame. You can also play with the argument num_colors from the state_choropleth formula to see how the color intensity changes</p>
+<p>I was invited as a speaker to give a Retail Analtyics presentation 
+during the 2016 Software Guru Data Day</p>
 
-<p>On the HW2 tab we need to create a choropleth of some other demographic statistic in 
-the data.frame df_county_demographics.</p>
+<p>This was a great experience to get to know fellow Mexican data enthusiasts...
+and some of them truly data scientists!</p>
 
-<p>On the HW3 tab we create a choropleth - zoomed at the county level - for demographic statistic available in the data.frame df_zip_demographics. For this we'll use the formula zip_choropleth(). Also, Shiny gives 
-us the advantage we can cross-reference the FIPS code list from 
-<a href="https://www.census.gov/" target="_blank">https://www.census.gov/</a>
-</p>
+<p>The presentation was made using Google I/O 2012 HTML5 Slide Deck as a template</p>
