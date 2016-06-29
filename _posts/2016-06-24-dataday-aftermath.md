@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "El día despues del Data Day"
-date: 2016-06-29 11:23:26
+date: 2016-06-29 11:27:05
 author: Arturo Cardenas
 categories:
 - blog
@@ -49,7 +49,7 @@ Nótese el chavorruco en acción estrenando zapatos:
 
 #### ¿Que fué lo que presente?
 
-Aquí está la versión impresa de mi presentación. La versión animada (usando Google I/O 2012 HTML5 Slide Deck como template)la puedes encontrar en el siguiente <a href="http://arturocm.github.io/dataday/" target="_blank">[Link]</a>
+Aquí está la versión impresa de mi presentación. La versión animada (usando Google I/O 2012 HTML5 Slide Deck como template) la puedes encontrar en el siguiente <a href="http://arturocm.github.io/dataday/" target="_blank">[Link]</a>
 
 <iframe src="//www.slideshare.net/slideshow/embed_code/key/65YQmyh13poSot" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> 
 
@@ -58,5 +58,7 @@ Aquí está la versión impresa de mi presentación. La versión animada (usando
 Gracias a <a href="https://twitter.com/pedrogk" target="_blank">@pedrogk</a> y a <a href="https://twitter.com/marayve" target="_blank">@marayve</a> por organizar este excelente evento y espero verlos pronto - ya sea el próximo DataDay o chillaxing en zilker park!
 
 Y me despido no sin antes hacer una mención honorífica a <a href="https://twitter.com/xuxoramos" target="_blank">@xuxoramos</a> por invitarme a ser parte de ese selecto grupo de **Speakers Chavorrucos**. No solo dijo "vente a CDMX wey!", me cedió su lugar en donde se iba a quejar a diestra y siniestra del concepto de "Big Data" que manejan las empresas. 
+
+***
 
 
