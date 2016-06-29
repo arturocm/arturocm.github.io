@@ -1,0 +1,18 @@
+---
+layout: post
+title: "El día despues del Data Day"
+date: `r Sys.time()`
+author: Arturo Cardenas
+categories:
+- blog
+- retail
+- analytics
+img: post01.jpg
+thumb: thumb01.jpg
+---
+
+Your markdown here!
+
+```{r}
+plot(1:10)
+```

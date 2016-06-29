@@ -35,7 +35,7 @@ We'll follow the next steps in KNIME to create a model that predicts the next pl
 
 <br>
 
-####1. Data Load
+#### 1. Data Load
 
 
 **WE NEED DATA!** (not Foosball data though). Goggling "NFL play by play stats" could lead you to almost buying a ~1,200 USD subscription to daily NFL stats updates. Since I don't have that amount to spend on this I will use the last 3 seasons available at [NFL savant](http://nflsavant.com/about.php).  
@@ -48,7 +48,7 @@ You can use two different nodes to read csv files: File Reader or CSV Reader. Th
 
 <br>
 
-####2. Transform
+#### 2. Transform
 
 
 Once the data is "ready to rumble", we need to create a single table containing all 3 files. The "Concatenate Node" does the same thing as the `rbind()` function in **R**. It puts one table after another, with the only requirement that it has to have the same columns. 
@@ -61,7 +61,7 @@ The grey node is a **metanode**. It's a bunch of nodes within a node. The metano
 
 <br>
 
-####3. Analysis
+#### 3. Analysis
 
 Now that we have the data that we need, in the format that we need, we are going to use the "partitioning" node to randomly split the data 70-30 (training-testing). Then we take 2 classification approaches: 
 
@@ -74,7 +74,7 @@ The decision tree model gives us `~68%` accuracy while the random forest model g
 
 <br>
 
-####4. Visualization
+#### 4. Visualization
 
 Using the "Decision tree to Image" node can give us an idea of how complex our decision tree is:
 
@@ -83,7 +83,7 @@ Using the "Decision tree to Image" node can give us an idea of how complex our d
 
 <br>
 
-####How good is our model? 
+#### How good is our model? 
 
 Well, according to [Science Daily](http://www.sciencedaily.com/releases/2015/08/150812103645.htm) having `~68%` or `~73%` is not bad at all! In this article they mention that they got an average of `75%`accuracy across 20 games. They use a logistic regression model for each quarter of the game to increase accuracy. Our Random Forest model performs as good as theirs during the same validated games:
 

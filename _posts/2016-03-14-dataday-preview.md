@@ -6,6 +6,7 @@ author: Arturo Cardenas
 categories:
 - blog
 - retail
+- español
 img: DataDay-logo.png
 thumb: DataDay-clean.png
 comments: true
