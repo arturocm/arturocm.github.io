@@ -1,14 +1,15 @@
 ---
 layout: post
 title: "El día despues del Data Day"
-date: 2016-06-29 11:19:45
+date: 2016-06-29 11:23:26
 author: Arturo Cardenas
 categories:
 - blog
 - retail
-- analytics
-img: post01.jpg
-thumb: thumb01.jpg
+- español
+img: DataDay-logo.png
+thumb: DataDay-clean.png
+comments: true
 ---
 
 Tuvieron que pasar 3 meses para que me dignara en darle seguimiento a mi último post [Nos vemos en el Data Day!](http://arturocm.github.io/dataday-preview). Esto solo pudo resultar en dos cosas: 

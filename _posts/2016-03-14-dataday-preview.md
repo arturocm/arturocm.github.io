@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Nos vemos en el DataDay!"
-date: 2016-03-14 08:30:38
+date: 2016-06-29 11:23:27
 author: Arturo Cardenas
 categories:
 - blog
